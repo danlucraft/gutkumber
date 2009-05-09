@@ -15,19 +15,19 @@ Features
 
  * Interact with dialogs using Cucumber steps:
 
-    When I click on "OK" in the "Save changes?" dialog
+        When I click on "OK" in the "Save changes?" dialog
       
  * Make keypresses:
 
-    When I press "Shift+K"
+        When I press "Shift+K"
     
  * and mouse clicks:
 
-    When I right click on ....
+        When I right click on ....
 
  * Type into TextEntrys or TextViews
  
-    When I type "hello"
+        When I type "hello"
  
 License
 -------
