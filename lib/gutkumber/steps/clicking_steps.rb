@@ -30,14 +30,3 @@ def left_click_on(widget)
   make_event_button(widget.window, x, y, 1, :press).put
   make_event_button(widget.window, x, y, 1, :release).put
 end
-
-When /^I (right|left) click on the (\w+)$/ do |button, tab_type| # 
-  tab = only(Redcar.win.collect_tabs(Redcar.const_get(tab_type)))
-  widget = tab.gtk_tab_widget
-  case button
-  when "right"
-    right_click_on(widget)
-  when "left"
-    left_click_on(widget)
-  end
-end

@@ -31,7 +31,7 @@ def make_event_key(key, type)
   end
   new_event_key.keyval = keyval
   new_event_key.hardware_keycode = Gdk::Keymap.default.get_entries_for_keyval(keyval).first.first
-  new_event_key.window = Redcar.win.window
+  new_event_key.window = Gtk::Window.toplevels.first.window
   new_event_key
 end
 

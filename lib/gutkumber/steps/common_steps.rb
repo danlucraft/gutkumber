@@ -22,6 +22,6 @@ Then /^the file #{FeaturesHelper::STRING_RE} should contain #{FeaturesHelper::ST
 end
 
 Then /^the file #{FeaturesHelper::STRING_RE} should not exist$/ do |filename|
-  File.exist?(Redcar::ROOT + filename).should_not be_true
+  File.exist?(filename).should_not be_true
 end
 
