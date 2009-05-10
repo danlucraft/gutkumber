@@ -43,6 +43,10 @@ loop should be modified to look like this:
 
 Other than that, you can load your application normally, from your Cucumber env.rb file.
 
+When you run your Cucumber tests, you must specify one of the Gtk formatters, like this:
+
+    --format Cucumber::Formatter::GtkFormatter
+    --format Cucumber::Formatter::GtkProgressFormatter
 
 Writing a testable Ruby-GNOME2 application
 ------------------------------------------
