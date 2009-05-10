@@ -3,7 +3,6 @@ Gutkumber
 
 by Daniel Lucraft (dan@fluentradical.com)
 
-
 Description
 -----------
 
@@ -29,6 +28,11 @@ Features
  
         When I type "hello"
  
+Install & Requirements
+----------------------
+
+Clone from git://github.com/danlucraft/gutkumber.git
+Requires Cucumber >= 0.3
 
 Usage
 -----
