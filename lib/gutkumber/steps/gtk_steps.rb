@@ -8,9 +8,25 @@ module Gutkumber
     end
   end
   
+  def self.dialogs
+    Gtk::Window.toplevels.select do |window|
+      window.class.ancestors.include?(Gtk::Dialog)
+    end
+  end
+  
+  def self.find_all_gtk_windows
+    Gtk::Window.toplevels
+  end
+  
   def self.window_buttons(window)
     buttons = window.child_widgets_with_class(Gtk::Button)
     buttons.map {|button| button.child_widgets_with_class(Gtk::Label).map{|la| la.text}.join(" ") }
+  end
+  
+  def self.label_texts(widget)
+    widget.child_widgets_with_class(Gtk::Label).map do |label|
+      label.text
+    end
   end
   
   def self.find_button(window, button_label)
@@ -67,6 +83,11 @@ Then /I should see a dialog "([^"]+)" with buttons "([^"]+)"/ do |title, button_
   button_names.split(",").map(&:strip).each do |name|
     buttons.should include(name)
   end
+end
+
+Then /I should see #{FeaturesHelper::STRING_RE} in a dialog/ do |text|
+  labels = Gutkumber.dialogs.map {|dialog| Gutkumber.label_texts(dialog) }
+  labels.any?{|label| label.any?{|l| l.include? text}}.should be_true
 end
 
 Then /there should be no dialog called "([^"]+)"/ do |title|
