@@ -3,6 +3,9 @@ $gutkumber = true
 
 require 'gtk2'
 
+require 'cucumber/formatter/progress'
+require 'cucumber/formatter/pretty'
+
 require 'gutkumber/formatter/gtk_formatter'
 require 'gutkumber/formatter/gtk_progress_formatter'
 require 'gutkumber/features_helper'
