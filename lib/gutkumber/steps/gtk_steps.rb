@@ -1,9 +1,18 @@
+When /^I left click on the button #{FeaturesHelper::STRING_RE} in the window #{FeaturesHelper::STRING_RE}$/ do |button, window|
+    button = parse_string(button)
+    window = Regexp.new(parse_string(window))
+
+    window = Gutkumber.find_gtk_window(window)
+    button = Gutkumber.find_button(window, button)
+
+    button.clicked
+end
 
 When /I click the button #{FeaturesHelper::STRING_RE} in the dialog #{FeaturesHelper::STRING_RE}/ do |button, dialog|
   button, dialog = parse_string(button), parse_string(dialog)
   dialog = Gutkumber.find_gtk_window(dialog)
   button = Gutkumber.find_button(dialog, button)
- 
+
   dialog.response(dialog.get_response(button))
   # sadly necessary for some reason. Please tell me why!
   Gutkumber.wait_tick
@@ -45,3 +54,10 @@ Then /there should be no dialog called "([^"]+)"/ do |title|
   Gutkumber.find_gtk_window(title).should be_nil
 end
 
+Then /^I should see #{FeaturesHelper::STRING_RE} in the window #{FeaturesHelper::STRING_RE}$/ do |label_text, window_name|
+  label_text, window = parse_string(label_text), Regexp.new(parse_string(window_name))
+
+  window = Gutkumber.find_gtk_window(window)
+  labels = Gutkumber.label_texts(window)
+  labels.any?{|label| label.include? label_text}.should be_true, "Coundn't find '#{label_text}' in window '#{window_name}', available labels in this window: #{labels.collect { |label| "'#{label}'" }.join(', ')}"
+end
