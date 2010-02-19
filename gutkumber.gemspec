@@ -17,9 +17,13 @@ Gem::Specification.new do |s|
      "README.md"
   ]
   s.files = [
-    ".gitignore",
+    ".document",
+     ".gitignore",
+     "LICENSE",
      "README.md",
+     "Rakefile",
      "VERSION",
+     "gutkumber.gemspec",
      "lib/gutkumber.rb",
      "lib/gutkumber/features_helper.rb",
      "lib/gutkumber/finders.rb",
