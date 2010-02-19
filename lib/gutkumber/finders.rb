@@ -51,3 +51,18 @@ module Gutkumber
     sleep TICK_SIZE
   end
 end
+
+class Gtk::Widget
+
+  def child_widgets_with_class(klass, acc=[])
+    if self.is_a? klass
+      acc << self
+    end
+    if self.respond_to?(:children)
+      self.children.each do |gtk_child|
+        gtk_child.child_widgets_with_class(klass, acc)
+      end
+    end
+    acc
+  end
+end

@@ -10,6 +10,8 @@ begin
     gem.email = "dan@fluentradical.com"
     gem.homepage = "http://github.com/danlucraft/gutkumber"
     gem.authors = ["Daniel Lucraft"]
+    gem.add_dependency(%q<rspec>, [">= 1.2.0"])
+    gem.add_dependency(%q<cucumber>, [">= 0.3.0"])
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
